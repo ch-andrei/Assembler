@@ -27,6 +27,7 @@ public class Assembler {
         // assemble
         List<SpecificInstruction> binary = buildBinaryInstructions(path_in);
         // write to file
+        binary.forEach(System.out::println);
         writeBinaryFile(path_out, binary);
     }
 
@@ -52,7 +53,7 @@ public class Assembler {
     private static void writeBinaryFile(String path_out, List<SpecificInstruction> binary) {
         List<String> out = new ArrayList<String>();
         for (int i = 0; i < binary.size(); i++) {
-            out.add(binary.get(i).noSpaceString());
+            out.add(binary.get(i).toString());
         }
         Tools.writeToFile(out, path_out);
     }
@@ -214,8 +215,8 @@ public class Assembler {
                     } else if (op.equals("bne") ||
                             op.equals("beq")
                             ) {
-                        rt = Tools.formatToBinary(Tools.remove$(parsed.get(0)), 5);
-                        rs = Tools.formatToBinary(Tools.remove$(parsed.get(1)), 5);
+                        rt = Tools.formatToBinary(Tools.remove$(parsed.get(1)), 5);
+                        rs = Tools.formatToBinary(Tools.remove$(parsed.get(0)), 5);
                         immediate = parsed.get(2);
                         immediate = Tools.formatToBinary(labels.get(immediate), 16);
                         if (parsed.size() > 3)
