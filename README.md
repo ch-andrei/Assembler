@@ -1,5 +1,6 @@
 # Assembler
-MIPS Assembler (implements 32 instructions) written in Java
+Limited Instruction Set MIPS Assembler (implements 32 instructions). 
+[coded in Java]
 
 Converts MIPS instructions into binary assembly. 
 This code is part of a bigger project in Computer Architechture at McGill University (Winter 2016): 5-stage Pipelined MIPS Processor. 
