@@ -6,6 +6,7 @@ import assembler_main.binary_instructions.instruction_types.JInstruction;
 import assembler_main.binary_instructions.instruction_types.RInstruction;
 import assembler_main.binary_instructions.toolset.Tools;
 
+import javax.tools.Tool;
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -131,6 +132,8 @@ public class Assembler {
                 int index = original_op.indexOf(op.charAt(0));
                 String sub = original_op.substring(index, original_op.length());
                 int space_index = sub.indexOf(' ');
+                if (space_index == -1)
+                    space_index = sub.indexOf('\t');
                 space_index = (space_index > 0) ? space_index : op.length();
                 op = op.substring(0, space_index);
             }
@@ -266,7 +269,8 @@ public class Assembler {
                     (instruction.getInstruction()).setRT(rt);
                     ((IInstruction) instruction.getInstruction()).setImmediate(immediate);
                 } else if (instruction.getInstruction() instanceof JInstruction) {
-                    address = original_no_labels.get(line_index).substring(2, original_no_labels.get(line_index).length());
+                    int index = (original_no_labels.get(line_index).contains("jal")) ? 3 : 2;
+                    address = original_no_labels.get(line_index).substring(index, original_no_labels.get(line_index).length());
                     address = address.replaceAll("\\s+", "");
                     address = Tools.formatToBinary(labels.get(address), 26);
                     ((JInstruction) instruction.getInstruction()).setAddress(address);

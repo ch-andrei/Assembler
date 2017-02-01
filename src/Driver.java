@@ -21,7 +21,7 @@ public class Driver {
         String write_to;
         boolean testing = true;
         if (testing) {
-            read_from = "./resources/test.asm";
+            read_from = "./resources/jtest.asm";
             write_to = "./resources/Init.dat";
         } else {
             if (args.length < 1) {
