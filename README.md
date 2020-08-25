@@ -16,3 +16,19 @@ I-Instructions: addi, slti, bne, sw, beq, lw, lb, sb, lui, andi, ori, xori, asrt
 J-Instructions: jal, jr, j;
 
 Custom test instructions: asrt, asrti, halt
+
+# How to use:
+
+This MIPS assembler produces binary instructions given an .asm input file.
+
+Many error cases and exceptions are handled, with relevant error messages printed to command line if such occur.
+
+In order to create a binary output from a given .asm file, follow these steps:
+1. Compile the assembler:
+	javac Driver.java
+2. Run the compiled Java program using the following syntax:
+	java Driver filenama
+	Note: filename must be a valid .asm file
+3. Locate the resulting binary instruction file:
+	The assembled file will be named filename.dat (name of the output is the same as the input file), 
+	which will be located in the same directory as the input target.
